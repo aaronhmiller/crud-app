@@ -14,7 +14,7 @@ services:
    - ./app/init.sql:/docker-entrypoint-initdb.d/init.sql
 
  app:
-  image: saltaaron/crud-app:1.0-arm
+  image: saltaaron/crud-app
   container_name: crud-app
   hostname: crud-app
   depends_on:
