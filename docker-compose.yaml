@@ -1,0 +1,23 @@
+version: "3"
+services:
+ postgres:
+  image: postgres
+  restart: always
+  container_name: postgres
+  ports:
+   - 5432:5432
+  environment:
+   - POSTGRES_USER=salt
+   - POSTGRES_DB=api
+   - POSTGRES_PASSWORD=salt
+  volumes:
+   - ./app/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+ app:
+  image: saltaaron/crud-app:1.0-arm
+  container_name: crud-app
+  hostname: crud-app
+  depends_on:
+   - postgres
+  ports:
+   - 3000:3000
