@@ -30,6 +30,12 @@ const getUserById = (req, res) => {
 const createUser = (req, res) => {
   const { name, email } = req.body
 
+  if (!name) {
+    return res.status(400).send({
+      message: "Name cannot be empty"
+    });
+  }
+ 
   pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING id', [name, email], (error, results) => {
     if (error) {
       throw error
