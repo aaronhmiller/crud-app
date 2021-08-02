@@ -1,3 +1,4 @@
+[![Node.js CI](https://github.com/aaronhmiller/crud-app/actions/workflows/main.yaml/badge.svg)](https://github.com/aaronhmiller/crud-app/actions/workflows/main.yaml)
 # crud-app
 Basic Express app w/ a DB and set of APIs to do CRUD operations with.
 

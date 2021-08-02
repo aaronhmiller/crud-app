@@ -30,9 +30,8 @@ jobs:
       run: docker-compose up -d
     - name: Test app
       run: | 
-        docker run --network host saltaaron/just-httpie POST :3000/users name=Mary
-        NAME=$(docker run --network host saltaaron/just-httpie GET :3000/users/1 | docker run -i --network host salt/just-jq -r '[].name')
-        if [ $NAME != 'Mary' ] ; then
+        NAME=$(docker run --network crud-app_default saltaaron/just-httpie GET crud-app:3000/users/1 | docker run -i --network crud-app_default saltaaron/just-jq -r '.[].name')
+        if [ $NAME != 'Jerry' ] ; then
           echo "The expected name was not returned. $NAME was returned instead."
           exit 1;
         fi
