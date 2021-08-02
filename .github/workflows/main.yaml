@@ -27,7 +27,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Run the app
-      run: node ./app/app.js &
+      run: docker-compose up -d
     - name: Test app
       run: | 
         docker run --network host saltaaron/just-httpie POST :3000/users name=Mary
