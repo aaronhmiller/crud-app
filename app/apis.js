@@ -4,7 +4,7 @@ const pool = new Pool({
   host: 'postgres',
   database: 'api',
   password: 'salt',
-  port: 5432,
+  port: 5432
 })
 
 const getUsers = (req, res) => {
@@ -32,15 +32,15 @@ const createUser = (req, res) => {
 
   if (!name) {
     return res.status(400).send({
-      message: "Name cannot be empty"
-    });
+      message: 'Name cannot be empty'
+    })
   }
- 
+
   pool.query('INSERT INTO users (name, email) VALUES ($1, $2) RETURNING id', [name, email], (error, results) => {
     if (error) {
       throw error
     }
-    var newID = results.rows[0].id;
+    const newID = results.rows[0].id
     res.status(201).send(`User added with ID: ${newID}`)
   })
 }
@@ -77,5 +77,5 @@ module.exports = {
   getUserById,
   createUser,
   updateUser,
-  deleteUser,
+  deleteUser
 }

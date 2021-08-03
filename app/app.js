@@ -8,12 +8,12 @@ const api = require('./apis')
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
-    extended: true,
+    extended: true
   })
 )
 
 app.get('/', (req, res) => {
-  res.json({ info: "Node.js, Express, and Postgres on " + `${os.arch}` })
+  res.json({ info: 'Node.js, Express, and Postgres on ' + `${os.arch}` })
 })
 
 app.get('/users', api.getUsers)
