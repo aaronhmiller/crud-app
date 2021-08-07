@@ -19,3 +19,6 @@ h/t to this [tutorial](https://blog.logrocket.com/nodejs-expressjs-postgresql-cr
 `docker buildx create --use`
 
 `docker buildx build --platform linux/amd64,linux/arm64 -t <your_docker_hub_account>/crud-app --push .`
+
+### Visualizing the codebase
+![Visualization of the codebase](./diagram.svg)
