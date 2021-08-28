@@ -27,7 +27,6 @@ app.listen(port, () => {
 })
 
 /* API doc
-GET    /          | displayHome()
 GET    /users     | getUsers()
 GET    /users/:id | getUserById()
 POST   /users     | createUser()
