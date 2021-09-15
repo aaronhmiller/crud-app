@@ -23,5 +23,14 @@ docker buildx build --platform linux/amd64,linux/arm64 \
  -t <your_docker_hub_account>/crud-app --push .
 ```
 
+### Using standard to enforce style guidelines
+
+`npm i pg express standard`
+
+`npm test` to see guidance from standard package
+
+`npx standard --fix` to apply the rules from standard in an automated way 
+
 ### Visualizing the codebase
+
 ![Visualization of the codebase](./diagram.svg)
