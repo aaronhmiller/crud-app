@@ -8,7 +8,6 @@
   "version": "1.0.0",
   "description": "A simple app to help understand RESTful API design and best practices",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "test": "standard"
   },
