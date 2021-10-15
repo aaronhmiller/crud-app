@@ -13,7 +13,7 @@ app.use(
 )
 
 app.get('/', (req, res) => {
-  res.json({ info: 'Node.js, Express, and Postgres on ' + `${os.arch}` })
+  res.json({ info: `${os.platform}` + ' running Node.js, Express, and Postgres on ' + `${os.arch}` })
 })
 
 app.get('/users', api.getUsers)
@@ -23,7 +23,7 @@ app.put('/users/:id', api.updateUser)
 app.delete('/users/:id', api.deleteUser)
 
 app.listen(port, () => {
-  console.log(`App running on port ${port} on ${os.arch}.`)
+  console.log(`App running in ${os.platform} on port ${port} on ${os.arch}.`)
 })
 
 /* API doc
