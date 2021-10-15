@@ -13,7 +13,7 @@ app.use(
 )
 
 app.get('/', (req, res) => {
-  res.json({ info: `${os.platform}` + ' running Node.js, Express, and Postgres on ' + `${os.arch}` })
+  res.json({ info: 'Node.js, Express, and Postgres running in ' + `${os.platform}` + ' on ' + `${os.arch}` })
 })
 
 app.get('/users', api.getUsers)
