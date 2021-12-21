@@ -9,7 +9,8 @@
   "description": "A simple app to help understand RESTful API design and best practices",
   "main": "app.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
