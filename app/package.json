@@ -1,15 +1,16 @@
 {
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.2",
     "pg": "^8.7.1",
-    "standard": "^16.0.3"
+    "standard": "^16.0.4"
   },
   "name": "crud-app",
   "version": "1.0.0",
   "description": "A simple app to help understand RESTful API design and best practices",
   "main": "app.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "fix": "standard --fix"
   },
   "repository": {
     "type": "git",

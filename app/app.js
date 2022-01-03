@@ -1,6 +1,6 @@
-const http = require('http');
-const https = require('https');
-const fs = require('fs');
+const http = require('http')
+const https = require('https')
+const fs = require('fs')
 const express = require('express')
 const bodyParser = require('body-parser')
 const os = require('os')
@@ -12,10 +12,10 @@ const api = require('./apis')
 const options = {
   key: fs.readFileSync('./keys/key.pem'),
   cert: fs.readFileSync('./certs/cert.pem')
-};
+}
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer(options, app);
+const httpServer = http.createServer(app)
+const httpsServer = https.createServer(options, app)
 
 app.use(bodyParser.json())
 app.use(
@@ -33,7 +33,6 @@ app.get('/users/:id', api.getUserById)
 app.post('/users', api.createUser)
 app.put('/users/:id', api.updateUser)
 app.delete('/users/:id', api.deleteUser)
-
 
 httpServer.listen(port, () => {
   console.log(`App running in ${os.platform} on port ${port} on ${os.arch}.`)
