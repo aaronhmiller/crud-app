@@ -4,6 +4,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const os = require('os')
 const app = express()
+const port = 3000
 const secPort = 3443
 const api = require('./apis')
 
@@ -12,6 +13,7 @@ const options = {
   cert: fs.readFileSync('./certs/cert.pem')
 };
 
+const httpServer = http.createServer(app);
 const httpsServer = https.createServer(options, app);
 
 app.use(bodyParser.json())
@@ -31,6 +33,10 @@ app.post('/users', api.createUser)
 app.put('/users/:id', api.updateUser)
 app.delete('/users/:id', api.deleteUser)
 
+
+httpServer.listen(port, () => {
+  console.log(`App running in ${os.platform} on port ${port} on ${os.arch}.`)
+})
 httpsServer.listen(secPort, () => {
   console.log(`App running in ${os.platform} on port ${secPort} on ${os.arch}.`)
 })
