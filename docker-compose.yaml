@@ -15,8 +15,8 @@ services:
 
  app:
 # besides commenting out, you can pass --no-build flag to docker compose as well
-  build: ./app
-#  image: saltaaron/crud-app
+#  build: ./app
+  image: saltaaron/crud-app
   container_name: crud-app
   hostname: crud-app
   depends_on:
