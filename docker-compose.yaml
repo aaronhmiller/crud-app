@@ -15,11 +15,12 @@ services:
 
  app:
 # besides commenting out, you can pass --no-build flag to docker compose as well
-#  build: ./app
-  image: saltaaron/crud-app:tls
+  build: ./app
+#  image: saltaaron/crud-app
   container_name: crud-app
   hostname: crud-app
   depends_on:
    - postgres
   ports:
+   - 3000:3000
    - 3443:3443
