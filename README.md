@@ -19,3 +19,7 @@ h/t to this [tutorial](https://blog.logrocket.com/nodejs-expressjs-postgresql-cr
 `docker buildx create --use`
 
 `docker buildx build --platform linux/amd64,linux/arm64 -t <your_docker_hub_account>/crud-app --push .`
+
+### Kubernetes note
+
+Because K8S is a terrible place to run anything stateful like a database, in `/app/apis.js` we've changed the `host` to be a managed service instead of a local container of Postgres.
