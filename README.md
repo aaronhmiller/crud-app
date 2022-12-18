@@ -1,4 +1,4 @@
-[![Node.js CI](https://github.com/aaronhmiller/crud-app/actions/workflows/main.yaml/badge.svg)](https://github.com/aaronhmiller/crud-app/actions/workflows/main.yaml) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Node.js CI](https://github.com/aaronhmiller/crud-app/actions/workflows/ci-test.yaml/badge.svg)](https://github.com/aaronhmiller/crud-app/actions/workflows/ci-test.yaml) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 # crud-app
 Basic Express app w/ a DB and set of APIs to do CRUD operations with.
