@@ -21,3 +21,10 @@ jobs:
           echo "The expected name was not returned. $NAME was returned instead."
           exit 1;
         fi
+    - name: Test TLS
+      run: |
+        NAME=$(docker run --network crud-app_default saltaaron/just-httpie GET crud-app:3443/users/1 --verify no | docker run -i --network crud-app_default saltaaron/just-jq -r '.[].name')
+        if [ $NAME != 'Marcia' ] ; then
+          echo "The expected name was not returned. $NAME was returned instead."
+          exit 1;
+        fi
