@@ -1,0 +1,27 @@
+version: "3"
+services:
+ postgres:
+  image: postgres
+  restart: always
+  container_name: postgres
+  ports:
+   - 5432:5432
+  environment:
+   - POSTGRES_USER=salt
+   - POSTGRES_DB=api
+   - POSTGRES_PASSWORD=salt
+  volumes:
+   - ./app/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+ app:
+# besides commenting out, you can pass --no-build flag to docker compose as well
+#  build: ./app
+  image: saltaaron/crud-app:test
+  restart: unless-stopped
+  container_name: crud-app
+  hostname: crud-app
+  depends_on:
+   - postgres
+  ports:
+   - 80:3000
+   - 443:3443
