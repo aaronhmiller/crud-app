@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@main
+    - name: Run the app
+      run: docker-compose up -d
+    - name: Test app
+      run: |
+        NAME=$(docker run --network crud-app_default saltaaron/just-httpie GET crud-app:3000/users/1 | docker run -i --network crud-app_default saltaaron/just-jq -r '.[].name')
+        if [ $NAME != 'Marcia' ] ; then
+          echo "The expected name was not returned. $NAME was returned instead."
+          exit 1;
+        fi
