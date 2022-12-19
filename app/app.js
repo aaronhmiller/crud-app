@@ -2,7 +2,6 @@ const http = require('http')
 const https = require('https')
 const express = require('express')
 const bodyParser = require('body-parser')
-const fs = require('fs')
 const os = require('os')
 const app = express()
 const port = 3000
@@ -11,8 +10,8 @@ const api = require('./apis')
 const terminate = require('./terminate')
 
 const options = {
-  key: fs.readFileSync('./keys/cloudflare-key.pem'),
-  cert: fs.readFileSync('./certs/cloudflare-cert.pem')
+  key: process.env.KEY,
+  cert: process.env.CERT
 }
 
 const httpServer = http.createServer(app)

@@ -14,8 +14,6 @@ services:
    - ./app/init.sql:/docker-entrypoint-initdb.d/init.sql
 
  app:
-# besides commenting out, you can pass --no-build flag to docker compose as well
-#  build: ./app
   image: saltaaron/crud-app
   restart: unless-stopped
   container_name: crud-app
@@ -25,3 +23,6 @@ services:
   ports:
    - 80:3000
    - 443:3443
+  environment:
+   - KEY=${CLOUDFLARE_KEY}
+   - CERT=${CLOUDFLARE_CERT}
