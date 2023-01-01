@@ -12,8 +12,8 @@ const getUsers = (req, res) => {
     if (error) {
       throw error
     }
-    if (results.rows == 0) {
-      res.status(200).send(`No users exist.`)
+    if (results.rows.length < 1) {
+      res.status(404).send('No users exist.')
     } else {
       res.status(200).json(results.rows)
     }
@@ -26,8 +26,8 @@ const getUserById = (req, res) => {
     if (error) {
       throw error
     }
-    if (results.rows == 0) {
-      res.status(200).send(`User cannot be retrieved as that ID does not exist.`)
+    if (results.rows.length < 1) {
+      res.status(404).send('User cannot be retrieved as that ID does not exist.')
     } else {
       res.status(200).json(results.rows)
     }
@@ -60,13 +60,13 @@ const updateUser = (req, res) => {
     if (error) {
       throw error
     }
-    if (results.rows == 0) {
-      res.status(200).send(`User cannot be updated because that ID does not exist.`)
+    if (results.rows.length < 1) {
+      res.status(404).send('User cannot be updated because that ID does not exist.')
     } else {
       if (!name && !email) {
-        res.status(400).send(`Either name and/or email must be sent.`)
+        res.status(400).send('Either name and/or email must be sent.')
       } else if (!name) {
-        pool.query('UPDATE users SET email = $1 WHERE id = $2',[email, id], (error) => {
+        pool.query('UPDATE users SET email = $1 WHERE id = $2', [email, id], (error) => {
           if (error) {
             throw error
           }
@@ -98,8 +98,8 @@ const deleteUser = (req, res) => {
     if (error) {
       throw error
     }
-    if (results.rows == 0) {
-      res.status(200).send(`User cannot be deleted because that ID does not exist.`)
+    if (results.rows.length < 1) {
+      res.status(404).send('User cannot be deleted because that ID does not exist.')
     } else {
       pool.query('DELETE FROM users WHERE id = $1', [id], (error) => {
         if (error) {

@@ -6,8 +6,8 @@ function terminate (server, options = { coredump: false, timeout: 500 }) {
 
   return (code, reason) => (err, promise) => {
     if (err && err instanceof Error) {
-    // Log error information, use a proper logging library here :)
-    console.log(err.message, err.stack)
+      // Log error information
+      console.log(err.message, err.stack)
     }
 
     // Attempt a graceful shutdown

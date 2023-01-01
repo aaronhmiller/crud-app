@@ -33,7 +33,7 @@ app.get('/healthcheck', (req, res) => {
 })
 
 app.get('/uptime', (req, res) => {
-  res.json({ uptime: 'crud-app has been running for ' + Math.floor(Math.floor(Math.floor(process.uptime())/3600)/24) + ' days.' })
+  res.json({ uptime: 'crud-app has been running for ' + Math.floor(Math.floor(Math.floor(process.uptime()) / 3600) / 24) + ' days.' })
 })
 
 const exitHandlerHttp = terminate(httpServer, {
