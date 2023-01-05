@@ -1,4 +1,4 @@
-name: Docker Hub CI
+name: Branch Docker Hub CI
 
 on:
   push:
@@ -25,12 +25,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Untagged build and push
         uses: docker/build-push-action@v3
         with:
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/crud-app:latest
-          platforms: linux/amd64,linux/arm64
           file: ./app/Dockerfile
           context: ./app
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
+          platforms: linux/amd64,linux/arm64
 
