@@ -20,6 +20,9 @@ To illustrate usage of certificates and keys (note that currently the included c
 
 `https :/users --verify no`
 
+### Passing in your own TLS
+To provide your own cert and key, set them as environment variables in your shell, run it using docker compose, and it'll pass the KEY and CERT as env vars to the Node process.
+
 ### Building the Express app
 
 `cd app`
