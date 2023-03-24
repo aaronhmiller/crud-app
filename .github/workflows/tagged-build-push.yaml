@@ -1,10 +1,10 @@
 name: Tagged Docker Hub CI
 
 on:
-  push:
-    tags: [ "v*" ]
-#  create:
+#  push:
 #    tags: [ "v*" ]
+  create:
+    tags: [ "v*" ]
 
 jobs:
   build:
