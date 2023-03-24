@@ -38,7 +38,7 @@ docker buildx build --platform linux/amd64,linux/arm64 \
 
 ### Using standard to enforce style guidelines
 
-`npm i pg express standard`
+`npm i standard`
 
 `npm test` to see guidance from standard package
 
