@@ -3,6 +3,8 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
+  create:
+    tags: [ "v*" ]
 jobs:
   get_data:
     runs-on: ubuntu-latest
