@@ -1,2 +1,4 @@
 /app/certs/*
 /app/keys/*
+.DS_Store
+/app/.DS_Store
