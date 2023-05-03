@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Untagged build and push
+        name: Branch build and push
         uses: docker/build-push-action@v3
         with:
           file: ./app/Dockerfile
