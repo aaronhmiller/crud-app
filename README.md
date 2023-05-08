@@ -20,11 +20,12 @@ shell into the container
 `kubectl -n crud-app exec --stdin --tty postgres-67f98f6f96-t4gtx -- /bin/bash`
 
 then
+```
 root@postgres:/# su postgres
 postgres@postgres:/$ psql
-
+```
 then
-psql -U salt -d api
+`psql -U salt -d api`
 
 then do what is in init.sql
 
