@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: app
+    spec:
+      containers:
+        - env:
+            - name: CERT
+              value: |
+                -----BEGIN CERTIFICATE-----
+                MIIDojCCAooCCQDpQmACkLpWZTANBgkqhkiG9w0BAQsFADCBkjELMAkGA1UEBhMC
+                VVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDU1vdW50YWluIFZpZXcx
+                CzAJBgNVBAoMAlNFMQswCQYDVQQLDAJTRTEWMBQGA1UEAwwNZGVtb2pveXRvLndp
+                bjEkMCIGCSqGSIb3DQEJARYVYWFyb25taWxsZXJAZ21haWwuY29tMB4XDTIyMTIy
+                MDIxNTExMloXDTIzMTIyMDIxNTExMlowgZIxCzAJBgNVBAYTAlVTMRMwEQYDVQQI
+                DApDYWxpZm9ybmlhMRYwFAYDVQQHDA1Nb3VudGFpbiBWaWV3MQswCQYDVQQKDAJT
+                RTELMAkGA1UECwwCU0UxFjAUBgNVBAMMDWRlbW9qb3l0by53aW4xJDAiBgkqhkiG
+                9w0BCQEWFWFhcm9ubWlsbGVyQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQAD
+                ggEPADCCAQoCggEBANIiMOlq1P7vJKJ5ff3p1iWTgha0ONm7tpDA99jaCA4DHMom
+                f8SiGYj89Vyh29TjW2CIK31hPuDDhdvc4Jd/Op9XZFOcR+tAFYjCcXq2xqmh6o37
+                rt7f4CesVTw2zekE4RhkmZejzPMVZYihQ50kEf+rEFvvVt329N2vc/6udD1TVRRO
+                niJ3GcfePkFu5Uc4boh5nFUhpEcf8bgfIY00z+efLfMgr6bFakNXHB2rdTqLxf8r
+                2bmyE27tWf6wVzTlYf40GHGuDiCNjEjVGI5tgdKytxd0CAVBl+fQATK7MtqRfF0D
+                IhhVJpOCLG75WMAnzibbZpXZzpguJoi3AsPyxLMCAwEAATANBgkqhkiG9w0BAQsF
+                AAOCAQEAt37qNt+5FYimWNTcKBmnmNMXFi8z0jNE524dn7RTeAc/ATvlk318tOUy
+                7ZQpJbwSNc4nEyWlih2ILsqJeq8b8F8xr/vjxXblkNdkY2QT4SA4FLtN5rgTdwaz
+                Ps0HEBft8shbqsK2BZ6mNo8IxwKDe8NrPzW1yNJB7RfEwJG5Whn9jHARRXg98usk
+                E05N49ziJAZMiyIEXcFyOVwEiKInEWNE2uAZ/87WQGTFsZ+UPD4RVf4ih09R511s
+                ucTrZsij2/uHwGYD8I8JIoLlNFkScO8ty2BRZ1vEjoz6d1tEF3EO9XiwwmP0TErQ
+                USm6gb5DyB3FMCEbttYLixTIcLnuuA==
+                -----END CERTIFICATE-----
+            - name: KEY
+              value: |
+                -----BEGIN PRIVATE KEY-----
+                MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDSIjDpatT+7ySi
+                eX396dYlk4IWtDjZu7aQwPfY2ggOAxzKJn/EohmI/PVcodvU41tgiCt9YT7gw4Xb
+                3OCXfzqfV2RTnEfrQBWIwnF6tsapoeqN+67e3+AnrFU8Ns3pBOEYZJmXo8zzFWWI
+                oUOdJBH/qxBb71bd9vTdr3P+rnQ9U1UUTp4idxnH3j5BbuVHOG6IeZxVIaRHH/G4
+                HyGNNM/nny3zIK+mxWpDVxwdq3U6i8X/K9m5shNu7Vn+sFc05WH+NBhxrg4gjYxI
+                1RiObYHSsrcXdAgFQZfn0AEyuzLakXxdAyIYVSaTgixu+VjAJ84m22aV2c6YLiaI
+                twLD8sSzAgMBAAECggEAJnxSnv2NAyADgqpjs/R23yzz/3qEiwRBPKPLAPF11jMl
+                u7RvZDEYIinKOmv+mjAF1Vk7NdxwqrPEuW7rx3Nq5jIYUuPlnCWBjCmopQQCwKDC
+                F70H2xP/tuRuO/gBoHLfUxthsg8zAzZhATQf8RDhJwVKmrvsGf0X/d4bjYKgEXbz
+                sEJOhHAfoVh6iLg35xH5a8YX19R+yXynwtMaA59/4TXuTp6kE9agYMV3cGg0drn9
+                TDRyJwcJ9PavD0d260XVkSMjbYzYmVW2vpxlJlYxJo9IMxHU5iDDCNBqAMWnB3rd
+                NXRLbq1ah6yabOKf7HzuUkP4OK8NrueGRK1vMxFj+QKBgQDxa1f1n3saHy+lz11H
+                Hx2NCg9XhL45Wmgc2P5jmIBAnBSq5+3/8bnXR9awNs470CsCtmd9/AHSkXG9h5Y8
+                WIhpfD+IiSKrqkYmbcPJGQ8aQBZ9SRC7OfzxTXhZyabNakaf16liMweQF0bWDqL1
+                3J7tSAz0nzvSnjXVMSHUgEux7QKBgQDe0yEKsJzU6FgBoYzb6pkBEIsqLU6nAYvO
+                JJ4RnDRYriT6xHRBTaHN0WHVKH99j1nflRWGbfXY075eCfoLcj2D7eyH39Y4rTaR
+                gdmABy5XmnMhwxVYx/2q8Qf595nJKmGq7S+WKEyEWxtHgBKLxa23RsupgkRbL3+0
+                R0XtsZX9HwKBgQCWMESJTszjpFEdIxMRgt78diyzMqawwXiRscEYrq/jAfatmBnt
+                JzGJJ2z9NSs59Lg9OMLLkrKDj+4ljas+IYnDrgNMapwCFa0MjS7G9Wr61rHnAUSC
+                ZYHhkGN14Eh/9ES5fg4nRD3JO2HbG0HwGG9aiH9e040A62HsHmPAcowkxQKBgQCA
+                4va1zDqrHEnrh5qGikg+SWd12gcoqshHUP7tiMDumqxhMMleDJ2PA5HnTimQYx7F
+                KOLugyQ1ayUuF+8+N7JFYZXzchHjbq2ltMouN/kiSwBVgxYR6HxeKFVIzWNy7MTZ
+                raBc5qp71IcO8JHJr2owHQ8o2WTYqbzgdmmId7QeWQKBgAtZ9BFxZvP+5Fn2C8k5
+                pFxc+t+aYUx+eveiY5mr9So/M3MfOIVTM/uZb2xTGYJFqkRab2WZyhc3OrdErxDw
+                6ItfRhDHxadN0oAReYZa2+yjnEVFQG47lqdtJScHoOBiUGWEGP/ERmXulKfY+Mkz
+                Poh5fmRAMzI2fk2MweXFVfi5
+                -----END PRIVATE KEY-----
+          image: saltaaron/crud-app
+          name: crud-app
+          ports:
+            - containerPort: 3000
+            - containerPort: 3443
+          resources: {}
+      hostname: crud-app
+      restartPolicy: Always
+status: {}
