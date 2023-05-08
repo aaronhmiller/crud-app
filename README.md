@@ -17,7 +17,7 @@ h/t to this [tutorial](https://blog.logrocket.com/nodejs-expressjs-postgresql-cr
 ### Using it with Kubernetes
 
 shell into the container
-kubectl -n crud-app exec --stdin --tty postgres-67f98f6f96-t4gtx -- /bin/bash
+`kubectl -n crud-app exec --stdin --tty postgres-67f98f6f96-t4gtx -- /bin/bash`
 
 then
 root@postgres:/# su postgres
