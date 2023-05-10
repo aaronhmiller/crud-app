@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: app
+    spec:
+      containers:
+        - env:
+            - name: CERT
+              value: |
+                -----BEGIN CERTIFICATE-----
+                MIIDojCCAooCCQDpQmACkLpWZTANBgkqhkiG9w0BAQsFADCBkjELMAkGA1UEBhMC
+                VVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDU1vdW50YWluIFZpZXcx
+                CzAJBgNVBAoMAlNFMQswCQYDVQQLDAJTRTEWMBQGA1UEAwwNZGVtb2pveXRvLndp
+                bjEkMCIGCSqGSIb3DQEJARYVYWFyb25taWxsZXJAZ21haWwuY29tMB4XDTIyMTIy
+                MDIxNTExMloXDTIzMTIyMDIxNTExMlowgZIxCzAJBgNVBAYTAlVTMRMwEQYDVQQI
+                DApDYWxpZm9ybmlhMRYwFAYDVQQHDA1Nb3VudGFpbiBWaWV3MQswCQYDVQQKDAJT
+                RTELMAkGA1UECwwCU0UxFjAUBgNVBAMMDWRlbW9qb3l0by53aW4xJDAiBgkqhkiG
+                9w0BCQEWFWFhcm9ubWlsbGVyQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQAD
+                ggEPADCCAQoCggEBANIiMOlq1P7vJKJ5ff3p1iWTgha0ONm7tpDA99jaCA4DHMom
+                f8SiGYj89Vyh29TjW2CIK31hPuDDhdvc4Jd/Op9XZFOcR+tAFYjCcXq2xqmh6o37
+                rt7f4CesVTw2zekE4RhkmZejzPMVZYihQ50kEf+rEFvvVt329N2vc/6udD1TVRRO
+                niJ3GcfePkFu5Uc4boh5nFUhpEcf8bgfIY00z+efLfMgr6bFakNXHB2rdTqLxf8r
+                2bmyE27tWf6wVzTlYf40GHGuDiCNjEjVGI5tgdKytxd0CAVBl+fQATK7MtqRfF0D
+                IhhVJpOCLG75WMAnzibbZpXZzpguJoi3AsPyxLMCAwEAATANBgkqhkiG9w0BAQsF
+                AAOCAQEAt37qNt+5FYimWNTcKBmnmNMXFi8z0jNE524dn7RTeAc/ATvlk318tOUy
+                7ZQpJbwSNc4nEyWlih2ILsqJeq8b8F8xr/vjxXblkNdkY2QT4SA4FLtN5rgTdwaz
+                Ps0HEBft8shbqsK2BZ6mNo8IxwKDe8NrPzW1yNJB7RfEwJG5Whn9jHARRXg98usk
+                E05N49ziJAZMiyIEXcFyOVwEiKInEWNE2uAZ/87WQGTFsZ+UPD4RVf4ih09R511s
+                ucTrZsij2/uHwGYD8I8JIoLlNFkScO8ty2BRZ1vEjoz6d1tEF3EO9XiwwmP0TErQ
+                USm6gb5DyB3FMCEbttYLixTIcLnuuA==
+                -----END CERTIFICATE-----
+            - name: KEY
+              value: |
+                -----BEGIN PRIVATE KEY-----
+                YOUR_PRIVATE_KEY_HERE               
+                -----END PRIVATE KEY-----
+          image: saltaaron/crud-app
+          name: crud-app
+          ports:
+            - containerPort: 3000
+            - containerPort: 3443
+        - name: salt-sensor
+          image: saltsecurity/sensor:10.0.0
+          imagePullPolicy: Always
+          securityContext:
+            capabilities:
+              add: ["NET_RAW", "NET_ADMIN"]
+          env:
+            - name: SALT_TOKEN
+              value: "SALT_TOKEN_HERE"
+            - name: SALT_BACKEND_HOST
+              value: "traffic-receiver-a.dnssf.com"
+      hostname: crud-app
+      restartPolicy: Always
