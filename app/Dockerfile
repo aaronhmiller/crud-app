@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.19
 WORKDIR /app
 COPY package.json .
 RUN apk add --update npm && \
