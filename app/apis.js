@@ -1,3 +1,4 @@
+const escapeHtml = require('escape-html')
 const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'salt',
@@ -70,21 +71,21 @@ const updateUser = (req, res) => {
           if (error) {
             throw error
           }
-          res.status(200).send(`User email updated with ID: ${id}`)
+          res.status(200).send(`User email updated with ID: ${escapeHtml(id)}`)
         })
       } else if (!email) {
         pool.query('UPDATE users SET name = $1 WHERE id = $2', [name, id], (error) => {
           if (error) {
             throw error
           }
-          res.status(200).send(`User name updated with ID: ${id}`)
+          res.status(200).send(`User name updated with ID: ${escapeHtml(id)}`)
         })
       } else {
         pool.query('UPDATE users SET name = $1, email = $2 WHERE id = $3', [name, email, id], (error) => {
           if (error) {
             throw error
           }
-          res.status(200).send(`User name and email updated with ID: ${id}`)
+          res.status(200).send(`User name and email updated with ID: ${escapeHtml(id)}`)
         })
       }
     }
@@ -105,7 +106,7 @@ const deleteUser = (req, res) => {
         if (error) {
           throw error
         }
-        res.status(200).send(`User deleted with ID: ${id}`)
+        res.status(200).send(`User deleted with ID: ${escapeHtml(id)}`)
       })
     }
   })
