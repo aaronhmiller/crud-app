@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
       - name: Update diagram
-        uses: githubocto/repo-visualizer@0.9.1
+        uses: githubocto/repo-visualizer@739781b29396ea08b529226d8970a5f17a01c52c
         with:
           excluded_paths: "diagram.svg,app/.dockerignore,.github,.gitignore,LICENSE"
           branch: diagram
