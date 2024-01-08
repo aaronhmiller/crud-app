@@ -15,7 +15,7 @@ services:
    - ./app/init.sql:/docker-entrypoint-initdb.d/init.sql
 
  app:
-  image: saltaaron/crud-app
+  image: aaronhmiller/crud-app
   restart: unless-stopped
   container_name: crud-app
   hostname: crud-app
