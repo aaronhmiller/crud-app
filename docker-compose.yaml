@@ -8,9 +8,9 @@ services:
   ports:
    - 5432:5432
   environment:
-   - POSTGRES_USER=salt
+   - POSTGRES_USER=ox
    - POSTGRES_DB=api
-   - POSTGRES_PASSWORD=salt
+   - POSTGRES_PASSWORD=ox
   volumes:
    - ./app/init.sql:/docker-entrypoint-initdb.d/init.sql
 
