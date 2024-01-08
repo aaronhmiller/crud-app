@@ -1,10 +1,10 @@
 const escapeHtml = require('escape-html')
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'salt',
+  user: 'ox',
   host: 'postgres',
   database: 'api',
-  password: 'salt',
+  password: 'ox',
   port: 5432
 })
 
