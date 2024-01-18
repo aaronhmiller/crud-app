@@ -28,3 +28,9 @@ jobs:
           echo "The expected name was not returned. $NAME was returned instead."
           exit 1;
         fi
+
+    - name: Run OX Security Scan to check for vulnerabilities
+        with:
+          ox_api_key: ${{ secrets.OX_API_KEY }}
+        uses: oxsecurity/ox-security-scan@main
+
