@@ -35,6 +35,6 @@ jobs:
 #        ox_api_key: ${{ secrets.OX_API_KEY }}
 #        ox_timeout: 1
 #        ox_fail_on_timeout: true
-      run: ${{ github.workspace }}/custom-ox.sh
+      run: bash ${{ github.workspace }}/custom-ox.sh
 #      uses: oxsecurity/ox-security-scan@main
 
