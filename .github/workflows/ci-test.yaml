@@ -31,10 +31,10 @@ jobs:
 
     - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
 #    - name: Run OX Security Scan to check for vulnerabilities
-      with:
-        ox_api_key: ${{ secrets.OX_API_KEY }}
-        ox_timeout: 1
-        ox_fail_on_timeout: true
+#      with:
+#        ox_api_key: ${{ secrets.OX_API_KEY }}
+#        ox_timeout: 1
+#        ox_fail_on_timeout: true
       run: ./custom-ox.sh
 #      uses: oxsecurity/ox-security-scan@main
 
