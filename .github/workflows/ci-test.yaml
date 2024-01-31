@@ -29,6 +29,11 @@ jobs:
           exit 1;
         fi
 
+- name: Debug
+  run: |
+    pwd
+    ls -l /home/runner/work/crud-app/crud-app/
+
     - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
 #    - name: Run OX Security Scan to check for vulnerabilities
 #      with:
