@@ -30,8 +30,9 @@ jobs:
         fi
 
     - name: Run OX Security Scan to check for vulnerabilities
-      run: sleep 1201 #testing forced timeout syntax
       with:
         ox_api_key: ${{ secrets.OX_API_KEY }}
+        ox_timeout: 1
+        ox_fail_on_timeout: true
       uses: oxsecurity/ox-security-scan@main
 
