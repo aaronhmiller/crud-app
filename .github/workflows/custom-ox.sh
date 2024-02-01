@@ -12,7 +12,7 @@ sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45
   -e INPUT_OX_TIMEOUT=1 \
   -e INPUT_OX_FAIL_ON_TIMEOUT=TRUE \
   -e INPUT_OX_HOST_URL \
-  -e INPUT_OX_SCAN_FULL_BRANCH \
+  -e INPUT_OX_SCAN_FULL_BRANCH=TRUE \
   -e INPUT_OX_OVERRIDE_BLOCKING \
   -e INPUT_OX_FAIL_ON_ERROR \
   -e INPUT_GITHUB_REPOSITORY_ID=579615061 \
