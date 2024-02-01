@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Add sleep before the ox action
-sleep 1201
+sleep 20
 
 # Set required params
-GITHUB_REPOSITORY_ID=579615061
-GITHUB_REPOSITORY_URL="git://github.com/aaronhmiller/crud-app.git"
+INPUT_GITHUB_REPOSITORY_ID=579615061
+INPUT_GITHUB_REPOSITORY_URL="git://github.com/aaronhmiller/crud-app.git"
 
 # Run the actual checkout action
 sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45b78 --workdir /github/workspace --rm \
