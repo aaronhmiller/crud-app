@@ -9,6 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    # set at job level
+    env:
+      GITHUB_REPOSITORY_ID: ${{ github.repository_id }}
 
     steps:
     - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
@@ -33,18 +37,12 @@ jobs:
 #       pwd
 #       ls -l /home/runner/work/crud-app/crud-app/
 
-    - name: Get Repository ID
-      id: repo_id
-      run: echo "::set-output name=repo_id::$(curl -sH -X https://api.github.com/repos/${{ github.repository }} | jq -r .id)"
-
     - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
 #    - name: Run OX Security Scan to check for vulnerabilities
 #      with:
 #        ox_api_key: ${{ secrets.OX_API_KEY }}
 #        ox_timeout: 1
 #        ox_fail_on_timeout: true
-      env:
-        GITHUB_REPOSITORY_ID: ${{ steps.repo_id.outputs.repo_id }}
       run: |
         echo "Repository ID: ${{ steps.repo_id.outputs.repo_id }}"
         ${{ github.workspace }}/.github/workflows/custom-ox.sh
