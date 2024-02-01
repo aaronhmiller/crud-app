@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add sleep before the ox action
-sleep 10
+sleep 5
 
 # Run the actual checkout action
 sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45b78 --workdir /github/workspace --rm \
