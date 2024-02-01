@@ -28,11 +28,10 @@ jobs:
           echo "The expected name was not returned. $NAME was returned instead."
           exit 1;
         fi
-
-- name: Debug
-  run: |
-    pwd
-    ls -l /home/runner/work/crud-app/crud-app/
+    - name: Debug
+      run: |
+       pwd
+       ls -l /home/runner/work/crud-app/crud-app/
 
     - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
 #    - name: Run OX Security Scan to check for vulnerabilities
