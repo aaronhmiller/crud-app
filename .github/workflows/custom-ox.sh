@@ -3,8 +3,7 @@
 # Add sleep before the ox action
 sleep 5
 
-# start
-echo `date`
+start=`date +%s`
 
 # Run the actual checkout action
 sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45b78 --workdir /github/workspace --rm \
@@ -75,5 +74,6 @@ sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45
   -v /home/runner/work/crud-app/crud-app:/github/workspace \
   oxsecurity/ox-block-mode:latest"
 
-# finish
-echo `date`
+finish=`date +%s`
+elapsed=`expr $finish - $start`
+echo $elapsed
