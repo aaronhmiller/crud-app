@@ -34,12 +34,12 @@ jobs:
           exit 1;
         fi
 
-    - name: Run OX Security Scan to check for vulnerabilities
-      with:
-        ox_api_key: ${{ secrets.OX_API_KEY }}
-        ox_timeout: 1
-        ox_fail_on_timeout: true
-      uses: oxsecurity/ox-security-scan@main
-#    - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
-#      run: |
-#        ${{ github.workspace }}/.github/workflows/custom-ox.sh
+#    - name: Run OX Security Scan to check for vulnerabilities
+#      with:
+#        ox_api_key: ${{ secrets.OX_API_KEY }}
+#        ox_timeout: 1
+#        ox_fail_on_timeout: true
+#      uses: oxsecurity/ox-security-scan@main
+    - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
+      run: |
+        ${{ github.workspace }}/.github/workflows/custom-ox.sh
