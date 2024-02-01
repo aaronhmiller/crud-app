@@ -3,6 +3,9 @@
 # Add sleep before the ox action
 sleep 5
 
+# start
+echo date
+
 # Run the actual checkout action
 sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45b78 --workdir /github/workspace --rm \
   -e INPUT_OX_API_KEY=$OX_API_KEY \
@@ -71,3 +74,6 @@ sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45
   -v /home/runner/work/_temp/_runner_file_commands:/github/file_commands \
   -v /home/runner/work/crud-app/crud-app:/github/workspace \
   oxsecurity/ox-block-mode:latest"
+
+# finish
+echo date
