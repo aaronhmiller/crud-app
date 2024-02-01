@@ -12,7 +12,7 @@ sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45
   -e INPUT_OX_SCAN_FULL_BRANCH \
   -e INPUT_OX_OVERRIDE_BLOCKING \
   -e INPUT_OX_FAIL_ON_ERROR \
-  -e INPUT_GITHUB_REPOSITORY_ID \
+  -e INPUT_GITHUB_REPOSITORY_ID=579615061 \
   -e INPUT_GITHUB_REPOSITORY_URL \
   -e INPUT_GITHUB_PULL_REQUEST_HEAD_SHA \
   -e HOME \
@@ -26,7 +26,7 @@ sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45
   -e GITHUB_RUN_NUMBER \
   -e GITHUB_RETENTION_DAYS \
   -e GITHUB_RUN_ATTEMPT \
-  -e GITHUB_REPOSITORY_ID \
+  -e GITHUB_REPOSITORY_ID=579615061 \
   -e GITHUB_ACTOR_ID \
   -e GITHUB_ACTOR \
   -e GITHUB_TRIGGERING_ACTOR \
