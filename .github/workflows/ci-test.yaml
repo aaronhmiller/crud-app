@@ -32,10 +32,6 @@ jobs:
           echo "The expected name was not returned. $NAME was returned instead."
           exit 1;
         fi
-#    - name: Debug
-#      run: |
-#       pwd
-#       ls -l /home/runner/work/crud-app/crud-app/
 
     - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
 #    - name: Run OX Security Scan to check for vulnerabilities
@@ -44,7 +40,6 @@ jobs:
 #        ox_timeout: 1
 #        ox_fail_on_timeout: true
       run: |
-        echo "Repository ID: ${{ steps.repo_id.outputs.repo_id }}"
         ${{ github.workspace }}/.github/workflows/custom-ox.sh
 #      uses: oxsecurity/ox-security-scan@main
 
