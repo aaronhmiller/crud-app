@@ -4,7 +4,7 @@
 sleep 5
 
 # start
-echo date
+echo `date`
 
 # Run the actual checkout action
 sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45b78 --workdir /github/workspace --rm \
@@ -76,4 +76,4 @@ sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45
   oxsecurity/ox-block-mode:latest"
 
 # finish
-echo date
+echo `date`
