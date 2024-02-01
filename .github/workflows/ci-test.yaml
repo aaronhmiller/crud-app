@@ -13,6 +13,7 @@ jobs:
     # set at job level
     env:
       GITHUB_REPOSITORY_ID: ${{ github.repository_id }}
+      OX_API_KEY: ${{ secrets.OX_API_KEY }}
 
     steps:
     - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
