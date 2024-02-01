@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add sleep before the ox action
-sleep 5
+sleep 15
 
 start=`date +%s`
 
@@ -76,4 +76,4 @@ sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45
 
 finish=`date +%s`
 elapsed=`expr $finish - $start`
-echo $elapsed
+echo "Scan ran for: $elapsed seconds"
