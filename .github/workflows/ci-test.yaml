@@ -35,7 +35,7 @@ jobs:
 
     - name: Get Repository ID
       id: repo_id
-      run: echo "::set-output name=repo_id::$(curl -sH https://api.github.com/repos/${{ github.repository }} | jq -r .id)"
+      run: echo "::set-output name=repo_id::$(curl -sH -X https://api.github.com/repos/${{ github.repository }} | jq -r .id)"
 
     - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
 #    - name: Run OX Security Scan to check for vulnerabilities
