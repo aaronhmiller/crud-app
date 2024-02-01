@@ -47,6 +47,6 @@ jobs:
         GITHUB_REPOSITORY_ID: ${{ steps.repo_id.outputs.repo_id }}
       run: |
         echo "Repository ID: ${{ steps.repo_id.outputs.repo_id }}"
-        bash ${{ github.workspace }}/.github/workflows/custom-ox.sh
+        ${{ github.workspace }}/.github/workflows/custom-ox.sh
 #      uses: oxsecurity/ox-security-scan@main
 
