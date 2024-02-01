@@ -39,6 +39,8 @@ jobs:
 #        ox_api_key: ${{ secrets.OX_API_KEY }}
 #        ox_timeout: 1
 #        ox_fail_on_timeout: true
+      env:
+        GITHUB_REPOSITORY_ID: 579615061
       run: bash ${{ github.workspace }}/.github/workflows/custom-ox.sh
 #      uses: oxsecurity/ox-security-scan@main
 
