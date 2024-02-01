@@ -5,7 +5,7 @@ sleep 20
 
 # Run the actual checkout action
 sh -c "/usr/bin/docker run --name oxsecurityoxblockmodelatest_6ff9a5 --label f45b78 --workdir /github/workspace --rm \
-  -e INPUT_OX_API_KEY \
+  -e INPUT_OX_API_KEY=${{ secrets.OX_API_KEY }} \
   -e INPUT_OX_TIMEOUT \
   -e INPUT_OX_FAIL_ON_TIMEOUT \
   -e INPUT_OX_HOST_URL \
