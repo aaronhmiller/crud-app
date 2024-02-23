@@ -52,6 +52,8 @@ spec:
             - containerPort: 3000
             - containerPort: 3443
           resources: {}
+          securityContext:
+            privileged: false
       hostname: crud-app
       restartPolicy: Always
 status: {}
