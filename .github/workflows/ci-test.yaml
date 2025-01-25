@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
     - name: Run the app
-      run: docker-compose up -d
+      run: docker compose up -d
     - name: Test app
       run: |
         NAME=$(docker run --network crud-app_default saltaaron/just-httpie GET crud-app:3000/users/1 | docker run -i --network crud-app_default saltaaron/just-jq -r '.[].name')
