@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_aaronhmiller_crud_app_1737771321330-push-trigger-input-set
+  identifier: Build_aaronhmiller_crud_app_1737771321330pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: test2
+  pipeline:
+    identifier: Build_aaronhmiller_crud_app_1737771321330
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
