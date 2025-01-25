@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_aaronhmiller_crud_app_1737771321330-pr-trigger-input-set
+  identifier: Build_aaronhmiller_crud_app_1737771321330prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: test2
+  pipeline:
+    identifier: Build_aaronhmiller_crud_app_1737771321330
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
