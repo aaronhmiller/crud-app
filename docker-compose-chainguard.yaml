@@ -1,6 +1,6 @@
 services:
  postgres:
-  image: postgres
+  image: cgr.dev/chainguard-private/postgres:latest
   restart: always
   container_name: postgres
   hostname: postgres
@@ -11,7 +11,7 @@ services:
    - POSTGRES_DB=api
    - POSTGRES_PASSWORD=cg
   volumes:
-   - ./app/init.sql:/docker-entrypoint-initdb.d/init.sql
+   - ./app/init.sql:/var/lib/postgres/initdb/init.sql
 
  app:
   image: aaronhmiller/crud-app
