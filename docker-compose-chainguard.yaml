@@ -14,7 +14,7 @@ services:
    - ./app/init.sql:/var/lib/postgres/initdb/init.sql
 
  app:
-  image: aaronhmiller/crud-app
+  image: aaronhmiller/crud-app-chainguard
   restart: unless-stopped
   container_name: crud-app
   hostname: crud-app
