@@ -67,3 +67,6 @@ Alternatively, you can run `npm run fix` which has been added to the package.jso
 ### Visualizing the codebase
 
 ![Visualization of the codebase](https://github.com/aaronhmiller/crud-app/blob/diagram/diagram.svg?raw=true)
+
+### AI Stuff
+testing out CodeRabbit. Woot!
