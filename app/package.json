@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/aaronhmiller/crud-app/issues"
   },
-  "homepage": "https://github.com/aaronhmiller/crud-app#readme"
+  "homepage": "https://github.com/aaronhmiller/crud-app#readme",
+  "devDependencies": {
+    "standard": "^17.1.2"
+  }
 }

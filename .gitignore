@@ -2,3 +2,11 @@
 /app/keys/*
 .DS_Store
 /app/.DS_Store
+
+# Factory runtime state: one folder per job, local to the machine running it.
+/factory/jobs/
+
+# Local Claude Code overrides
+.claude/settings.local.json
+
+node_modules/
