@@ -3,6 +3,7 @@
   "max_rounds": 3,
   "base_branch": "main",
   "merge_method": "squash",
+  "merge_admin": true,
   "labels": {
     "queue": "factory",
     "needs_info": "factory:needs-info",
