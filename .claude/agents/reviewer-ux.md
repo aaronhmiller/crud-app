@@ -59,7 +59,14 @@ If the branch has no user-facing change, write PASS and say so.
 
 ## Write review-ux.md
 
-```markdown
+This is the one step you must not skip. Your hand-back line is not the
+review; only the file counts, and the factory treats a run that leaves no
+file as a failure and spawns you again. Write the file with Bash, using a
+heredoc, before you reply. Do not use Write, and do not ask the orchestrator
+to save the text for you: it never writes agents' files.
+
+```bash
+mkdir -p <job folder>/round-<N> && cat > <job folder>/round-<N>/review-ux.md <<'EOF'
 VERDICT: PASS | CHANGES
 
 ## Findings
@@ -67,11 +74,20 @@ VERDICT: PASS | CHANGES
 
 ## Notes
 Non-blocking observations. Optional.
+EOF
+head -1 <job folder>/round-<N>/review-ux.md
 ```
+
+Use absolute paths from your prompt in place of `<job folder>` and `<N>`.
+The quoted `'EOF'` keeps backticks and `$` in your review from being
+interpreted by the shell. The `head -1` at the end must print your verdict
+line; if it prints nothing or an error, the file was not written, so fix the
+command and run it again.
 
 - The first line must be exactly `VERDICT: PASS` or `VERDICT: CHANGES`.
 - Use CHANGES only for problems a visitor would actually hit that are in scope
   for the spec. Put matters of taste under Notes.
 - Under Findings, write "None." when there are none.
 
-Reply with one line: `VERDICT: PASS` or `VERDICT: CHANGES (<k> findings)`.
+Only after `head -1` has shown the verdict line, reply with one line:
+`VERDICT: PASS` or `VERDICT: CHANGES (<k> findings)`.
