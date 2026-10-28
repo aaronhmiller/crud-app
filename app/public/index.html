@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>crud-app users API</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,7 +16,7 @@
     <form id="list-form">
       <button type="submit">Send</button>
     </form>
-    <pre id="list-out" class="out"></pre>
+    <pre id="list-out" class="out" aria-live="polite" aria-label="List users response"></pre>
   </section>
 
   <section>
@@ -25,7 +26,7 @@
       <label>Id <input id="get-id" type="number" min="1" step="1" required></label>
       <button type="submit">Send</button>
     </form>
-    <pre id="get-out" class="out"></pre>
+    <pre id="get-out" class="out" aria-live="polite" aria-label="Get user response"></pre>
   </section>
 
   <section>
@@ -36,7 +37,7 @@
       <label>Email <input id="create-email" type="text" maxlength="30"></label>
       <button type="submit">Send</button>
     </form>
-    <pre id="create-out" class="out"></pre>
+    <pre id="create-out" class="out" aria-live="polite" aria-label="Create user response"></pre>
   </section>
 
   <section>
@@ -48,7 +49,7 @@
       <label>Email <input id="update-email" type="text" maxlength="30"></label>
       <button type="submit">Send</button>
     </form>
-    <pre id="update-out" class="out"></pre>
+    <pre id="update-out" class="out" aria-live="polite" aria-label="Update user response"></pre>
   </section>
 
   <section>
@@ -58,7 +59,7 @@
       <label>Id <input id="delete-id" type="number" min="1" step="1" required></label>
       <button type="submit">Send</button>
     </form>
-    <pre id="delete-out" class="out"></pre>
+    <pre id="delete-out" class="out" aria-live="polite" aria-label="Delete user response"></pre>
   </section>
 
   <script src="ui.js"></script>
