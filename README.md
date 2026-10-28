@@ -70,3 +70,13 @@ Alternatively, you can run `npm run fix` which has been added to the package.jso
 
 ### AI Stuff
 testing out CodeRabbit. Woot!
+
+### Software factory
+
+GitHub issues labeled `factory` are built, tested, reviewed and merged by
+Claude Code agents: run `/factory run` in Claude Code at the repo root. The
+pipeline, its gate (`factory/checks.sh`) and its guardrails are described in
+`AGENTS.md`. `factory/` and `.claude/` are adapted from ZazenCodes'
+[Software Factory for Claude Code v2](https://github.com/zazencodes/zazencodes-season-3/tree/main/src/software-factory-claude-code-v2)
+and are licensed under GPLv3 (see `factory/LICENSE`); the app itself remains
+Apache-2.0.
