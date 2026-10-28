@@ -15,6 +15,12 @@ h/t to this [tutorial](https://blog.logrocket.com/nodejs-expressjs-postgresql-cr
 
 `http post :/users name=Mary email=mary@example.com`
 
+### Using it from a browser
+
+After `docker compose up -d`, open `http://localhost/ui/` (or `https://localhost/ui/`).
+The page has a small form for each of the five `/users` endpoints and shows the status and body of each response.
+Compose runs the published `aaronhmiller/crud-app` image, so the page appears there only once that image is rebuilt and pushed.
+
 ### Using it with Kubernetes
 
 shell into the container

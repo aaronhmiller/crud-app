@@ -13,6 +13,7 @@ app/app.js          the server: Express setup, routes, HTTP on 3000 and HTTPS on
 app/apis.js         the five route handlers and the pg Pool
 app/terminate.js    graceful shutdown helper
 app/init.sql        schema and seed rows, loaded by Postgres on first start
+app/public/         static browser page for the API (index.html, style.css, ui.js), served at /ui
 app/test/           unit tests (node:test), one file per area: <area>.test.js
 app/package.json    dependencies (express, pg) and the `standard` lint
 app/Dockerfile*     container builds (Alpine and Chainguard variants)
@@ -111,9 +112,10 @@ human to decide.
 
 ## Styling
 
-There is no user interface. The `ui` surface does not apply to this project;
-the API's "style" is its response shapes and status codes, which live in the
-Conventions above.
+The only user interface is the static page in `app/public/`, served at `/ui`.
+It must stay dependency-free, load no external assets and render API data with
+`textContent` only. The API's "style" is its response shapes and status codes,
+which live in the Conventions above.
 
 ## Who uses this
 
