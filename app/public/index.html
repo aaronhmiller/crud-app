@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>crud-app users API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Users API</h1>
+  <p>Ids are whole numbers. Names and emails are at most 30 characters.</p>
+
+  <section>
+    <h2>List users</h2>
+    <p><code>GET /users</code></p>
+    <form id="list-form">
+      <button type="submit">Send</button>
+    </form>
+    <pre id="list-out" class="out"></pre>
+  </section>
+
+  <section>
+    <h2>Get user</h2>
+    <p><code>GET /users/&lt;id&gt;</code></p>
+    <form id="get-form">
+      <label>Id <input id="get-id" type="number" min="1" step="1" required></label>
+      <button type="submit">Send</button>
+    </form>
+    <pre id="get-out" class="out"></pre>
+  </section>
+
+  <section>
+    <h2>Create user</h2>
+    <p><code>POST /users</code></p>
+    <form id="create-form">
+      <label>Name <input id="create-name" type="text" maxlength="30" required></label>
+      <label>Email <input id="create-email" type="text" maxlength="30"></label>
+      <button type="submit">Send</button>
+    </form>
+    <pre id="create-out" class="out"></pre>
+  </section>
+
+  <section>
+    <h2>Update user</h2>
+    <p><code>PUT /users/&lt;id&gt;</code></p>
+    <form id="update-form">
+      <label>Id <input id="update-id" type="number" min="1" step="1" required></label>
+      <label>Name <input id="update-name" type="text" maxlength="30"></label>
+      <label>Email <input id="update-email" type="text" maxlength="30"></label>
+      <button type="submit">Send</button>
+    </form>
+    <pre id="update-out" class="out"></pre>
+  </section>
+
+  <section>
+    <h2>Delete user</h2>
+    <p><code>DELETE /users/&lt;id&gt;</code></p>
+    <form id="delete-form">
+      <label>Id <input id="delete-id" type="number" min="1" step="1" required></label>
+      <button type="submit">Send</button>
+    </form>
+    <pre id="delete-out" class="out"></pre>
+  </section>
+
+  <script src="ui.js"></script>
+</body>
+</html>

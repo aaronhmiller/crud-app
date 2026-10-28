@@ -3,6 +3,7 @@ const https = require('https')
 const express = require('express')
 const bodyParser = require('body-parser')
 const os = require('os')
+const path = require('path')
 const app = express()
 const port = 3000
 const secPort = 3443
@@ -23,6 +24,8 @@ app.use(
     extended: true
   })
 )
+
+app.use('/ui', express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
   res.json({ info: 'Node.js, Express, and Postgres running in ' + `${os.platform}` + ' on ' + `${os.arch}` })
