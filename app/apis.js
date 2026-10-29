@@ -112,10 +112,24 @@ const deleteUser = (req, res) => {
   })
 }
 
+const deleteAllUsers = (req, res) => {
+  pool.query('DELETE FROM users', (error, results) => {
+    if (error) {
+      return res.status(500).send('Users could not be deleted.')
+    }
+    if (results.rowCount > 0) {
+      res.status(200).send(`Deleted ${results.rowCount} users.`)
+    } else {
+      res.status(404).send('No users exist.')
+    }
+  })
+}
+
 module.exports = {
   getUsers,
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  deleteAllUsers
 }

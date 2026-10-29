@@ -15,6 +15,10 @@ h/t to this [tutorial](https://blog.logrocket.com/nodejs-expressjs-postgresql-cr
 
 `http post :/users name=Mary email=mary@example.com`
 
+`http delete :/users`
+
+This removes every user.
+
 ### Using it from a browser
 
 After `docker compose up -d`, open `http://localhost/ui/` (or `https://localhost/ui/`).
