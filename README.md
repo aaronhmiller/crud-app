@@ -19,10 +19,14 @@ h/t to this [tutorial](https://blog.logrocket.com/nodejs-expressjs-postgresql-cr
 
 This removes every user.
 
+`http post :/users/reset`
+
+This puts back the three seed users with ids 1 to 3.
+
 ### Using it from a browser
 
 After `docker compose up -d`, open `http://localhost/ui/` (or `https://localhost/ui/`).
-The page has a small form for each of the `/users` endpoints and shows the status and body of each response. "Delete all users" asks for confirmation before it sends anything.
+The page has a small form for each of the `/users` endpoints and shows the status and body of each response. "Delete all users" and "Re-initialize users" ask for confirmation before they send anything.
 Compose runs the published `aaronhmiller/crud-app` image, so the page appears there only once that image is rebuilt and pushed.
 
 ### Using it with Kubernetes
