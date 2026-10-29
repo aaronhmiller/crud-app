@@ -38,3 +38,11 @@ test('index.html references ui.js and style.css', () => {
   assert.ok(html.includes('src="ui.js"'))
   assert.ok(html.includes('href="style.css"'))
 })
+
+test('delete all users section asks for confirmation before sending', () => {
+  assert.ok(html.includes('id="delete-all-form"'))
+  assert.ok(html.includes('id="delete-all-out"'))
+  assert.ok(js.includes("wire('delete-all'"))
+  assert.ok(js.includes('confirm('))
+  assert.ok(js.includes("send(out, 'DELETE', '/users')"))
+})

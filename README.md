@@ -22,7 +22,7 @@ This removes every user.
 ### Using it from a browser
 
 After `docker compose up -d`, open `http://localhost/ui/` (or `https://localhost/ui/`).
-The page has a small form for each of the five `/users` endpoints and shows the status and body of each response.
+The page has a small form for each of the `/users` endpoints and shows the status and body of each response. "Delete all users" asks for confirmation before it sends anything.
 Compose runs the published `aaronhmiller/crud-app` image, so the page appears there only once that image is rebuilt and pushed.
 
 ### Using it with Kubernetes

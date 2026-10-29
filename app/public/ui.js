@@ -51,3 +51,10 @@ wire('create', (out) => send(out, 'POST', '/users', {
 }))
 wire('update', (out) => send(out, 'PUT', userPath('update-id'), nameAndEmail('update')))
 wire('delete', (out) => send(out, 'DELETE', userPath('delete-id')))
+wire('delete-all', (out) => {
+  if (!confirm('Delete every user? This cannot be undone.')) {
+    show(out, 'Cancelled: no request sent.')
+    return
+  }
+  return send(out, 'DELETE', '/users')
+})
