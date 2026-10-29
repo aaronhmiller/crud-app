@@ -12,15 +12,18 @@
   "routing": {
     "low": {
       "builder": "sonnet",
-      "code": "haiku"
+      "code": "haiku",
+      "coderabbit": "haiku"
     },
     "medium": {
       "builder": "sonnet",
-      "code": "sonnet"
+      "code": "sonnet",
+      "coderabbit": "haiku"
     },
     "high": {
       "builder": "opus",
-      "code": "sonnet"
+      "code": "sonnet",
+      "coderabbit": "sonnet"
     }
   },
   "surface_reviewers": {
@@ -29,7 +32,8 @@
       "ui": "haiku"
     },
     "security": {
-      "security": "opus"
+      "security": "opus",
+      "coderabbit-security": "sonnet"
     }
   },
   "protected_paths": [

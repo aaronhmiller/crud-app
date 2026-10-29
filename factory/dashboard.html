@@ -464,7 +464,7 @@ async function listFiles(dir) {
 }
 
 const ORDER = ['issue.md', 'intake.md', 'spec.md', 'build.md', 'decision.md']
-const ROUND_ORDER = ['checks', 'review-code', 'review-security', 'review-ux', 'review-ui', 'merge-checks']
+const ROUND_ORDER = ['checks', 'review-code', 'review-coderabbit', 'review-security', 'review-coderabbit-security', 'review-ux', 'review-ui', 'merge-checks']
 
 function fileRank(path) {
   if (ORDER.includes(path)) return [0, ORDER.indexOf(path), path]
