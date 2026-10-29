@@ -58,3 +58,10 @@ wire('delete-all', (out) => {
   }
   return send(out, 'DELETE', '/users')
 })
+wire('reset', (out) => {
+  if (!confirm('Replace every user with the 3 seed users? This discards all changes.')) {
+    show(out, 'Cancelled: no request sent.')
+    return
+  }
+  return send(out, 'POST', '/users/reset')
+})

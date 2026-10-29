@@ -68,3 +68,37 @@ test('app.js registers DELETE /users', () => {
   const src = fs.readFileSync(path.join(__dirname, '..', 'app.js'), 'utf8')
   assert.ok(src.includes("app.delete('/users', api.deleteAllUsers)"))
 })
+
+test('resetUsers answers 200 with the seed message', () => {
+  stubQuery(null, [])
+  const res = stubRes()
+  api.resetUsers({}, res)
+  assert.strictEqual(res.code, 200)
+  assert.strictEqual(res.body, 'Users reset to 3 seed users.')
+})
+
+test('resetUsers answers 500 on a query error without throwing', () => {
+  stubQuery(new Error('secret detail'), undefined)
+  const res = stubRes()
+  assert.doesNotThrow(() => api.resetUsers({}, res))
+  assert.strictEqual(res.code, 500)
+  assert.strictEqual(res.body, 'Users could not be reset.')
+})
+
+test('resetUsers runs one query with RESTART IDENTITY and every init.sql seed row', () => {
+  const init = fs.readFileSync(path.join(__dirname, '..', 'init.sql'), 'utf8')
+  const pairs = init.match(/\('[^']*', '[^']*'\)/g)
+  assert.strictEqual(pairs.length, 3)
+  const calls = stubQuery(null, [])
+  api.resetUsers({}, stubRes())
+  assert.strictEqual(calls.length, 1)
+  assert.ok(calls[0].includes('RESTART IDENTITY'))
+  for (const pair of pairs) {
+    assert.ok(calls[0].includes(pair), pair)
+  }
+})
+
+test('app.js registers POST /users/reset', () => {
+  const src = fs.readFileSync(path.join(__dirname, '..', 'app.js'), 'utf8')
+  assert.ok(src.includes("app.post('/users/reset', api.resetUsers)"))
+})

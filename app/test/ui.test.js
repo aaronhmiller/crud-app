@@ -46,3 +46,11 @@ test('delete all users section asks for confirmation before sending', () => {
   assert.ok(js.includes('confirm('))
   assert.ok(js.includes("send(out, 'DELETE', '/users')"))
 })
+
+test('reset section asks for confirmation before sending', () => {
+  assert.ok(html.includes('id="reset-form"'))
+  assert.ok(html.includes('id="reset-out"'))
+  assert.ok(js.includes("wire('reset'"))
+  assert.ok(js.includes('confirm('))
+  assert.ok(js.includes("send(out, 'POST', '/users/reset')"))
+})

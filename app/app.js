@@ -65,6 +65,7 @@ app.post('/users', api.createUser)
 app.put('/users/:id', api.updateUser)
 app.delete('/users/:id', api.deleteUser)
 app.delete('/users', api.deleteAllUsers)
+app.post('/users/reset', api.resetUsers)
 
 httpServer.listen(port, () => {
   console.log(`App running in ${os.platform} on port ${port} on ${os.arch}.`)
@@ -80,4 +81,5 @@ POST   /users     | createUser()
 PUT    /users/:id | updateUser()
 DELETE /users/:id | deleteUser()
 DELETE /users     | deleteAllUsers()
+POST   /users/reset | resetUsers()
 */
