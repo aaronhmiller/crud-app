@@ -159,7 +159,10 @@ Read `agents.reviewers` from `job.json`. Spawn every reviewer whose
 `round-N/review-<r>.md` doesn't exist yet, **in one message**, each with
 `<paths> Review round <N>.` (plus ` Port: <port>.` for `reviewer-ux` and
 `reviewer-ui`) and its model. The agent for reviewer `code` is
-`reviewer-code`, and so on.
+`reviewer-code`, and so on; `coderabbit` and `coderabbit-security` are
+`reviewer-coderabbit` and `reviewer-coderabbit-security`, which run the
+CodeRabbit CLI. A reviewer that replies `ERROR:` left no file: retry it as
+above.
 
 **WAIT FOR ALL.** After each one finishes, run `factory/bin/job sync <job>` so
 the dashboard chips fill in. The round is done when `sync` shows no `pending`

@@ -130,3 +130,11 @@ intake → spec → build → gate → review → approve, one PR per issue. Sta
 `factory/jobs/` (gitignored); `factory/bin/job` is its only writer. Checks:
 `factory/checks.sh`. Dashboard: `cd factory && python3 -m http.server`, then
 open http://localhost:8000/dashboard.html.
+
+The `coderabbit` and `coderabbit-security` reviewers run the CodeRabbit CLI
+through `factory/bin/cr-review`, so the machine running the factory needs
+`coderabbit` installed and signed in (`coderabbit auth login`; check with
+`coderabbit doctor`). It is factory tooling, not a dependency of the app.
+Without it, or past the CLI's hourly review limit, those reviewers reply
+`ERROR:`, the job stays in review, and `/factory run` resumes it once the CLI
+works.

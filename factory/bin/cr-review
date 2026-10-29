@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Run a CodeRabbit CLI review of a job's worktree without a 10 minute cap.
+
+Usage:
+  cr-review start <worktree> [--deep]   start the review detached; prints the output path
+  cr-review wait <output>               wait up to 9 minutes; prints `done`, `running` or `failed: <reason>`
+
+A review can take up to 15 minutes, longer than one Bash call may run, so
+`start` detaches `coderabbit review --agent` with its NDJSON going to a temp
+file and `wait` is called until the review finishes. `wait` stops the review
+and reports `failed` once it has run for LIMIT seconds.
+"""
+
+import json
+import os
+import signal
+import subprocess
+import sys
+import tempfile
+import time
+from pathlib import Path
+
+FACTORY = Path(__file__).resolve().parents[1]
+CONFIG = json.loads((FACTORY / "config.json").read_text())
+LIMIT = 30 * 60
+WAIT = 9 * 60
+POLL = 5
+
+
+def die(msg):
+    print(f"cr-review: {msg}", file=sys.stderr)
+    sys.exit(2)
+
+
+def start(worktree, deep):
+    if not Path(worktree, ".git").exists():
+        die(f"{worktree} isn't a git worktree")
+    cmd = ["coderabbit", "review", "--agent", "--committed", "--fresh",
+           "--base", f"origin/{CONFIG['base_branch']}", "-c", "AGENTS.md"]
+    if deep:
+        cmd.append("--deep")
+    out = Path(tempfile.mkdtemp(prefix="cr-review-")) / "review.ndjson"
+    try:
+        with open(out, "w") as f:
+            proc = subprocess.Popen(cmd, cwd=worktree, stdout=f, stderr=subprocess.STDOUT,
+                                    stdin=subprocess.DEVNULL, start_new_session=True)
+    except FileNotFoundError:
+        die("the coderabbit CLI isn't installed (see AGENTS.md, Software factory)")
+    out.with_suffix(".pid").write_text(f"{proc.pid} {time.time()}\n")
+    print(out)
+
+
+def alive(pid):
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
+def complete(out):
+    """The `complete` event, or None while the review hasn't finished."""
+    for line in out.read_text().splitlines():
+        try:
+            event = json.loads(line)
+        except ValueError:
+            continue
+        if isinstance(event, dict) and event.get("type") == "complete":
+            return event
+    return None
+
+
+def wait(out):
+    out = Path(out)
+    pidfile = out.with_suffix(".pid")
+    if not pidfile.exists():
+        die(f"{out} wasn't started by cr-review start")
+    pid, started = pidfile.read_text().split()
+    pid, started = int(pid), float(started)
+    end = time.time() + WAIT
+    while True:
+        event = complete(out)
+        if event is not None:
+            # A review that finished but failed, or skipped files, didn't cover the branch.
+            outcome, unreviewed = event.get("outcome"), event.get("unreviewedFileCount") or 0
+            if outcome == "completed" and not unreviewed:
+                print("done")
+            else:
+                print(f"failed: the review finished with outcome {outcome!r} and "
+                      f"{unreviewed} unreviewed files: {str(event.get('message', ''))[:300]}")
+            return
+        if not alive(pid):
+            tail = out.read_text().strip().splitlines()[-1:] or ["no output"]
+            print(f"failed: the review exited without completing; last line: {tail[0][:300]}")
+            return
+        if time.time() - started > LIMIT:
+            try:
+                os.killpg(pid, signal.SIGTERM)
+            except ProcessLookupError:
+                pass
+            print(f"failed: the review ran longer than {LIMIT // 60} minutes and was stopped")
+            return
+        if time.time() > end:
+            print("running")
+            return
+        time.sleep(POLL)
+
+
+def main(argv):
+    if len(argv) >= 2 and argv[0] == "start" and argv[2:] in ([], ["--deep"]):
+        start(argv[1], argv[2:] == ["--deep"])
+    elif len(argv) == 2 and argv[0] == "wait":
+        wait(argv[1])
+    else:
+        die("usage: cr-review start <worktree> [--deep] | cr-review wait <output>")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
