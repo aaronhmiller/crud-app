@@ -13,7 +13,6 @@ jobs:
     # set at job level
     env:
       GITHUB_REPOSITORY_ID: ${{ github.repository_id }}
-      OX_API_KEY: ${{ secrets.OX_API_KEY }}
 
     steps:
     - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744
@@ -33,13 +32,3 @@ jobs:
           echo "The expected name was not returned. $NAME was returned instead."
           exit 1;
         fi
-
-#    - name: Run OX Security Scan to check for vulnerabilities
-#      with:
-#        ox_api_key: ${{ secrets.OX_API_KEY }}
-#        ox_timeout: 1
-#        ox_fail_on_timeout: true
-#      uses: oxsecurity/ox-security-scan@main
-    - name: Run CUSTOMIZED OX Security Scan to check for vulnerabilities
-      run: |
-        ${{ github.workspace }}/.github/workflows/custom-ox.sh
