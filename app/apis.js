@@ -125,8 +125,11 @@ const deleteAllUsers = (req, res) => {
   })
 }
 
+// One multi-statement simple query runs as a single implicit transaction, so it
+// succeeds or fails as a whole; an explicit BEGIN would leave the pooled client
+// in an aborted transaction after a failure.
 const resetUsers = (req, res) => {
-  pool.query("BEGIN; TRUNCATE users RESTART IDENTITY; INSERT INTO users (name, email) VALUES ('Marcia', 'marcia@example.edu'), ('Amy', 'amy@example.com'), ('Gerry', 'gerry@example.com'); COMMIT;", (error) => {
+  pool.query("TRUNCATE users RESTART IDENTITY; INSERT INTO users (name, email) VALUES ('Marcia', 'marcia@example.edu'), ('Amy', 'amy@example.com'), ('Gerry', 'gerry@example.com');", (error) => {
     if (error) {
       return res.status(500).send('Users could not be reset.')
     }

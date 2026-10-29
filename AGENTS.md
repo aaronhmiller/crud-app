@@ -69,8 +69,8 @@ The CI workflow additionally brings the stack up with Compose and smoke-tests
 - Handlers are `(req, res)` functions exported from `app/apis.js` and wired
   in `app/app.js`. New endpoints follow that pattern and keep the status
   codes the existing handlers use: 200, 201, 400, 404. The one exception is
-  a query error in `deleteAllUsers` or `resetUsers`, which answers 500 with a short generic
-  message.
+  a query error in `deleteAllUsers` or `resetUsers`, which answers 500 with a
+  short generic message.
 - Validate request input before it reaches a query: ids are integers, names
   and emails fit the `VARCHAR(30)` columns, and bad input gets a 400 with a
   short message. Anything echoed back to the client goes through

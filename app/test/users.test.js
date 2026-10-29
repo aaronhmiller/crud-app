@@ -93,6 +93,7 @@ test('resetUsers runs one query with RESTART IDENTITY and every init.sql seed ro
   api.resetUsers({}, stubRes())
   assert.strictEqual(calls.length, 1)
   assert.ok(calls[0].includes('RESTART IDENTITY'))
+  assert.ok(!/BEGIN|COMMIT/.test(calls[0]))
   for (const pair of pairs) {
     assert.ok(calls[0].includes(pair), pair)
   }
